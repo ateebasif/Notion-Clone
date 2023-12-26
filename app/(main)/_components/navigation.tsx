@@ -2,16 +2,22 @@
 
 import React, { ElementRef, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react";
 import { useMediaQuery } from "usehooks-ts";
+import { useMutation } from "convex/react";
 
+import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 
-import {UserItem} from "./user-item";
+import { UserItem } from "./user-item";
+import Item from "./item";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -90,6 +96,7 @@ const Navigation = () => {
     }
   };
 
+  //! To Completely collapse or hide the sidebar
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true);
@@ -100,6 +107,16 @@ const Navigation = () => {
       navbarRef.current.style.setProperty("left", "0");
       setTimeout(() => setIsResetting(false), 300);
     }
+  };
+
+  const handleCreate = () => {
+    const promise = create({ title: "Untitled" });
+
+    toast.promise(promise, {
+      loading: "Creating a new note...",
+      success: "New note created!",
+      error: "Failed to create a new note.",
+    });
   };
 
   return (
@@ -126,11 +143,18 @@ const Navigation = () => {
 
         {/* Action Items */}
         <div>
-          <UserItem/>
+          <UserItem />
+          <Item label="Search" icon={Search} isSearch onClick={
+            ()=>{}
+          } />
+
+          <Item label="Settings" icon={Settings}  onClick={
+            ()=>{}
+          } />
+          <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
 
         {/* Documents Items */}
-
         <div className="mt-4">
           <p>Documents</p>
         </div>
