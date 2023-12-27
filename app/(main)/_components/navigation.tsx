@@ -22,6 +22,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import { useSearch } from "@/hooks/use-search";
 
 import { UserItem } from "./user-item";
 import Item from "./item";
@@ -29,9 +30,9 @@ import DocumentList from "./document-list";
 import TrashBox from "./trash-box";
 
 const Navigation = () => {
+  const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
-
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
@@ -160,28 +161,25 @@ const Navigation = () => {
         <div>
           <UserItem />
           {/* Search */}
-          <Item label="Search" icon={Search} isSearch onClick={() => {}} />
+          <Item label="Search" icon={Search} isSearch onClick={search.onOpen} />
 
           {/* Settings */}
-          <Item label="Settings" icon={Settings} onClick={() => { }} />
-          
+          <Item label="Settings" icon={Settings} onClick={() => {}} />
+
           {/* Add New Page */}
           <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
-
-
         </div>
 
         {/* Documents Items */}
         <div className="mt-4">
-{/* Documents or pages list */}
+          {/* Documents or pages list */}
           <DocumentList />
 
-
-                    {/* Add New Page */}
+          {/* Add New Page */}
           <Item onClick={handleCreate} icon={Plus} label="Add a page" />
 
           {/* Trash */}
-                <Popover>
+          <Popover>
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" icon={Trash} />
             </PopoverTrigger>
