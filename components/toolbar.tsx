@@ -4,6 +4,7 @@ import { useMutation } from "convex/react";
 import { ImageIcon, Smile, X } from "lucide-react";
 import TextareaAutosize from "react-textarea-autosize";
 
+import { useCoverImage } from "@/hooks/use-cover-image";
 import { Button } from "@/ui/button";
 import { Doc } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
@@ -25,6 +26,8 @@ const Toolbar = (props: ToolbarProps) => {
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+
+  const coverImage = useCoverImage();
 
   const enableInput = () => {
     if (preview) return;
@@ -112,7 +115,7 @@ const Toolbar = (props: ToolbarProps) => {
         {/* For Cover Image -> Can Add Cover Image */}
         {!initialData.coverImage && !preview && (
           <Button
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
             className="text-muted-foreground text-xs"
             variant="outline"
             size="sm"
