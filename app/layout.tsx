@@ -12,19 +12,19 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jotion",
+  title: "Notion",
   description: "The connected workspace where better, faster work happens.",
   icons: {
     icon: [
       {
         media: "(prefers-color-scheme: light)",
-        url: "/logo.svg",
-        href: "/logo.svg",
+        url: "/notion-logo.svg",
+        href: "/notion-logo.svg",
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/logo-dark.svg",
-        href: "/logo-dark.svg",
+        url: "/notion-logo-dark.svg",
+        href: "/notion-logo-dark.svg",
       },
     ],
   },
@@ -45,7 +45,7 @@ export default function RootLayout({
               defaultTheme="system"
               enableSystem
               disableTransitionOnChange
-              storageKey="jotion-theme-2"
+              storageKey="notion-theme-2"
             >
               <Toaster position="bottom-center" />
               <ModalProvider />
