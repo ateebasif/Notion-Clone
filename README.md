@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Notion Clone
+
+## Overview
+
+This project is a feature-rich Notion clone, built with Next.js 14, TypeScript, Tailwind CSS, Zustand, Clerk for authentication, Convex for real-time updates, Edge Store for file management, and a rich text editor for versatile note creation.
+
+https://github.com/ateebasif/Notion-Clone/assets/22915645/be25d13a-167a-433f-92cb-5b07b8827884
+
+### Live Demo 🔗
+
+Check out the live demo: [Notion Clone](https://notion-clone-five-rust.vercel.app/)
+
+## Features
+
+- **Real-time Updates**: Benefit from real-time updates powered by Convex.
+- **Notion-style editor**: Create versatile notes with different types of blocks.
+- **Collapsible and Resizable Sidebar**: Similar to Notion, the sidebar can be collapsed and resized for a customized user experience.
+- **Light☀️ and Dark🌑 Mode**: Switch between light and dark themes to suit your preference.
+- **Create Note** 📝: Easily create a new note from the sidebar or the documents page.
+- **Nested Level Notes**: Organize your notes with nested levels for a structured approach.
+- **Emojis and Cover for Notes**: Personalize your notes with emojis and custom covers.
+- File upload 📂
+- File deletion
+- File replacement
+- **Update Note Title**: Modify note titles conveniently from the toolbar or the page itself.
+- **Trash Management** 🗑️: Move notes to trash, recover from trash, and permanently delete when needed.
+- **Publish Live on Web**: Share your notes with others by publishing them live on the web for preview. Un-publish when desired.
+
+## Technologies Used
+
+- **Next.js 14**
+- **TypeScript**
+- **Tailwind CSS**
+- **Shadcn UI (for ui components)**
+- **Zustand (for state management)**
+- **Clerk (for authentication)**
+- **Convex (for real-time updates)**
+- **Edge Store (for file management)**
+- **@blocknote/react (rich text editor)**
+- **Vercel (for deployment)**
+
+### Prerequisites
+
+**Node version 18.x.x**
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/ateebasif/Notion-Clone.git
+   cd notion-clone
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
 
-## Learn More
+   npm install
+   # or
+   yarn
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Configuration
+   To run this project locally, create a `.env.local` file with the following variables:
+   you need the following keys for configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Convex](https://www.convex.dev) database for Real-time update
+- [Clerk](https://clerk.com) For Authentication
+- [Edge Store](https://edgestore.dev) for File Storage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  ```bash
 
-## Deploy on Vercel
+  CONVEX_DEPLOYMENT=""
+  NEXT_PUBLIC_CONVEX_URL=""
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+  CLERK_SECRET_KEY=""
+  EDGE_STORE_ACCESS_KEY=""
+  EDGE_STORE_SECRET_KEY=""
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Setup Convex
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```
+   npx convex dev
+
+   ```
+
+5. Run the development server:
+
+   ```bash
+   npm run dev
+   #or
+   yarn dev
+   ```
+
+   Open http://localhost:3000 in your browser to see the result.
